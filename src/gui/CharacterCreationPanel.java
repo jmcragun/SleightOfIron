@@ -18,10 +18,10 @@ public class CharacterCreationPanel extends JPanel implements ActionListener {
 
     public CharacterCreationPanel(Game root) {
         this.root = root;
-
+        //TODO: Create specific labels for portions of character creation e.g. make the JLable below a variable
         this.add(new JLabel("Character Creation!"));
         namefield = new JTextField(20);
-        //TODO: character builder methods, character object or game runtime
+        //TODO: character builder methods, character object for game runtime
         namefield.addKeyListener(new KeyListener() {
 
             //Note: The only key event that matters is an enter key press. The other methods have been intentionally left blank
@@ -44,10 +44,12 @@ public class CharacterCreationPanel extends JPanel implements ActionListener {
                         System.out.println("Character named " + name);
                         // Try to initialize character file
                         try {
-                            //TODO: Make dynamic naming alg.
+                            //TODO: Make dynamic naming alg. (Low Priority)
                             characterbuilder = new FileWriter("./Game_Data/Characters/" + name + ".txt");
                             characterbuilder.write("Name: " + name);
                             System.out.println("Name written successfully");
+                            //TODO: Figure out when to close the scanner
+                            characterbuilder.close();
                         } catch (IOException io) {
                             System.out.println("There was a problem initializing chr file");
                         }
@@ -60,12 +62,8 @@ public class CharacterCreationPanel extends JPanel implements ActionListener {
 
             }
         });
+
         this.add(namefield);
-        try {
-            characterbuilder.close();
-        } catch (IOException e) {
-            System.out.println("Character builder did not close");
-        }
     }
 
     @Override

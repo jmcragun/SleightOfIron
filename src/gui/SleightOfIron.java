@@ -3,6 +3,7 @@ package gui;
 import javax.swing.SwingUtilities;
 
 /**
+ * @author Joshua Cragun
  * This is the class that will launch the Sleight of Iron Game
  */
 public class SleightOfIron {
